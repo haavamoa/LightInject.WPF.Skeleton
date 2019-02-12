@@ -1,0 +1,20 @@
+﻿using System.Windows;
+using LightInject;
+
+namespace Client
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var container = new ServiceContainer(new ContainerOptions { EnablePropertyInjection = false });
+            container.RegisterFrom<CompositionRoot>();
+            container.Register<IServiceContainer, ServiceContainer>();
+            container.GetInstance<MainWindow>().Show();
+        }
+    }
+}
