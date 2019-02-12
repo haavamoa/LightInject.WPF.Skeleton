@@ -13,7 +13,6 @@ namespace Client
             base.OnStartup(e);
             var container = new ServiceContainer(new ContainerOptions { EnablePropertyInjection = false });
             container.RegisterFrom<CompositionRoot>();
-            container.Register<IServiceContainer, ServiceContainer>();
             container.GetInstance<MainWindow>().Show();
         }
     }
